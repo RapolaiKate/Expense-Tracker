@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:theme="@style/Theme.Material3.DayNight.NoActionBar"
+    tools:context="com.example.expensetrackerclean.ui.addexpense.AddExpenseFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:layout="@layout/fragment_dashboard"
+    android:padding="16dp"
+    android:background="@color/backgroundColor">
+
+    <!-- Total Amount Card-->
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    app:cardElevation="6dp"
+    app:cardCornerRadius="16dp"
+    app:cardBackgroundColor="@color/cardColor">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Total Label -->
+<TextView
+    android:id="@+id/tvTotalLabel"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/total_expenses"
+    android:textSize="14sp"
+    android:textStyle="bold"
+    android:textColor="@color/textSecondary"/>
+
+    <!-- Total Amount -->
+<TextView
+    android:id="@+id/tvTotalAmount"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/amount"
+    android:textSize="24sp"
+    android:textStyle="bold"
+    android:textColor="@color/successGreen"
+    android:layout_marginTop="8dp"/>
+</LinearLayout>
+</androidx.cardview.widget.CardView>
+
+    <!-- RecyclerView list -->
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/recyclerViewExpenses"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:clipToPadding="false"
+    android:paddingBottom="16dp"/>
+
+    <!-- Add Expense Button -->
+<com.google.android.material.button.MaterialButton
+    android:id="@+id/btnAddExpense"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/add_expense"
+    android:textSize="16sp"
+    android:textColor="@color/cardColor"
+    android:backgroundTint="@color/primaryColor"
+    android:padding="14dp"/>
+
+    <!-- Stats Button -->
+<com.google.android.material.button.MaterialButton
+    android:id="@+id/btnStats"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/view_stats"
+    android:textSize="16sp"
+    android:textColor="@color/cardColor"
+    android:backgroundTint="@color/primaryColor"
+    android:padding="14dp"/>
+
+</LinearLayout>

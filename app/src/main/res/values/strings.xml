@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">ExpenseTracker</string>
+    <string name="expense_title">Title</string>
+    <string name="enter_expense_title">Enter title</string>
+    <string name="amount">Amount</string>
+    <string name="enter_amount">Enter amount</string>
+    <string name="category">Category</string>
+    <string name="enter_category">Enter category</string>
+    <string name="date_date">Date</string>
+    <string name="date">Select date</string>
+    <string name="save_expense">Save Expense </string>
+    <string name="total_expenses">Total Expenses</string>
+    <string name="add_expense">Add Expense</string>
+    <string name="update_expense">Update Expense</string>
+    <string name="delete_expense">Delete Expense</string>
+    <string name="statistics">Statistics</string>
+    <string name="total">Total</string>
+    <string name="total_amount">R 0.00</string>
+    <string name="this_month">Month Expense</string>
+    <string name="cancel">Cancel Expense</string>
+    <string name="date_select">12/05/2025</string>
+    <string name="app_logo">App Logo</string>
+    <string name="view_stats">View Stats</string>
+    <string name="back_to_dashboard">Back to Dashboard</string>
+</resources>

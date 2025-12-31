@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:theme="@style/Theme.Material3.DayNight.NoActionBar"
+    tools:context="com.example.expensetrackerclean.ui.stats.StatsFragment"
+    tools:layout="@layout/fragment_stats"
+    android:padding="16dp"
+    android:background="@color/backgroundColor">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <!-- Screen Title -->
+<TextView
+    android:id="@+id/tvStatsTitle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/statistics"
+    android:textSize="24sp"
+    android:textStyle="bold"
+    android:textColor="@color/textPrimary"
+    android:layout_marginBottom="16dp"/>
+
+    <!-- Total Expense -->
+<TextView
+    android:id="@+id/tvTotalAmountLabel"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/total_expenses"
+    android:textSize="18sp"
+    android:textColor="@color/textSecondary"
+    android:layout_marginTop="16dp"/>
+
+<TextView
+    android:id="@+id/tvTotalAmount"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/total_amount"
+    android:textSize="22sp"
+    android:textStyle="bold"
+    android:textColor="@color/primaryColor"
+    android:layout_marginBottom="32dp"/>
+
+    <!-- Optional: Monthly Expenses -->
+<TextView
+    android:id="@+id/tvMonthlyAmountLabel"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/this_month"
+    android:textSize="18sp"
+    android:textColor="@color/textSecondary"
+    android:layout_marginTop="16dp"/>
+
+<TextView
+    android:id="@+id/tvMonthlyAmount"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/total_amount"
+    android:textSize="22sp"
+    android:textStyle="bold"
+    android:textColor="@color/primaryColor"/>
+
+    <!-- Back Button -->
+<com.google.android.material.button.MaterialButton
+        android:id="@+id/btnBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/back_to_dashboard"
+        android:textSize="16sp"
+        android:textColor="@color/cardColor"
+        android:backgroundTint="@color/primaryColor"
+        android:padding="14dp"
+        android:layout_marginTop="24dp"/>
+
+     </LinearLayout>
+</ScrollView>
