@@ -6,9 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:theme="@style/Theme.Material3.DayNight.NoActionBar"
-    tools:context="com.example.expensetrackerclean.ui.addexpense.AddExpenseFragment"
+    tools:context="com.kate.expensetrackerclean.ui.addexpense.AddExpenseFragment"
     tools:layout="@layout/fragment_addexpense"
-    android:background="@color/backgroundColor">
+    android:background="?attr/colorSurface">
 
 <LinearLayout
     android:layout_width="match_parent"
@@ -23,7 +23,7 @@
     android:layout_height="wrap_content"
     android:text="@string/add_expense"
     android:textSize="24sp"
-    android:textColor="@color/textPrimary"
+    android:textColor="?attr/colorOnSurface"
     android:textStyle="bold"
     android:layout_gravity="center_horizontal"
     android:layout_marginTop="16dp"
@@ -35,13 +35,15 @@
     android:layout_height="wrap_content"
     android:text="@string/expense_title"
     android:textSize="16sp"
-    android:textColor="@color/textSecondary"/>
+    android:textColor="?attr/colorOnSurface"/>
 
 <EditText
     android:id="@+id/editTitle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:hint="@string/enter_expense_title"
+    android:textColor="?attr/colorOnSurface"
+    android:textColorHint="?attr/colorOnSurface"
     android:inputType="text"
     android:autofillHints="name"
     android:minHeight="48dp"
@@ -53,7 +55,7 @@
     android:id="@+id/tvErrorTitle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:textColor="@android:color/holo_red_dark"
+    android:textColor="@android:color/holo_red_light"
     android:textSize="14sp"
     android:visibility="gone"/>
 
@@ -64,13 +66,15 @@
     android:text="@string/amount"
     android:textSize="16sp"
     android:layout_marginTop="8dp"
-    android:textColor="@color/textSecondary"/>
+    android:textColor="?attr/colorOnSurface"/>
 
 <EditText
     android:id="@+id/editAmount"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:hint="@string/enter_amount"
+    android:textColor="?attr/colorOnSurface"
+    android:textColorHint="?attr/colorOnSurface"
     android:inputType="numberDecimal"
     android:minHeight="48dp"
     android:autofillHints="creditCardNumber"
@@ -80,7 +84,7 @@
     android:id="@+id/tvErrorAmount"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:textColor="@android:color/holo_red_dark"
+    android:textColor="@android:color/holo_red_light"
     android:textSize="14sp"
     android:visibility="gone"/>
 
@@ -90,7 +94,7 @@
     android:layout_height="wrap_content"
     android:text="@string/category"
     android:textSize="16sp"
-    android:textColor="@color/textSecondary"
+    android:textColor="?attr/colorOnSurface"
     android:layout_marginTop="8dp"/>
 
 <EditText
@@ -99,6 +103,8 @@
     android:layout_height="wrap_content"
     android:hint="@string/enter_category"
     android:inputType="text"
+    android:textColor="?attr/colorOnSurface"
+    android:textColorHint="?attr/colorOnSurface"
     android:minHeight="48dp"
     android:autofillHints="name"
     android:layout_marginBottom="12dp"/>
@@ -117,7 +123,7 @@
     android:layout_height="wrap_content"
     android:text="@string/date_date"
     android:textSize="16sp"
-    android:textColor="@color/textSecondary"
+    android:textColor="?attr/colorOnSurface"
     android:layout_marginTop="8dp"/>
 
 <EditText
@@ -126,6 +132,8 @@
     android:layout_height="wrap_content"
     android:hint="@string/date"
     android:inputType="date"
+    android:textColor="?attr/colorOnSurface"
+    android:textColorHint="?attr/colorOnSurface"
     android:focusable="false"
     android:clickable="true"
     android:minHeight="48dp"
@@ -148,8 +156,9 @@
     android:layout_height="wrap_content"
     android:text="@string/save_expense"
     android:textSize="16sp"
-    android:textColor="@color/cardColor"
-    android:backgroundTint="@color/primaryColor"
+    style="@style/Widget.Material3.Button"
+    android:textColor="?attr/colorOnPrimary"
+    android:backgroundTint="?attr/colorPrimary"
     android:layout_marginTop="16dp"
     android:padding="14dp"/>
 
@@ -161,8 +170,9 @@
     android:layout_height="wrap_content"
     android:text="@string/cancel"
     android:textSize="16sp"
-    android:textColor="@android:color/white"
-    app:backgroundTint="@color/primaryColor"
+    style="@style/Widget.Material3.Button"
+    android:textColor="?attr/colorOnPrimary"
+    app:backgroundTint="?attr/colorPrimary"
     android:layout_marginTop="8dp"
     android:padding="14dp"/>
 

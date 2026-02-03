@@ -2,91 +2,86 @@
 
 ## 📌 Overview
 
-Expense Tracker is an Android application built with Kotlin that helps users record, track, and manage their daily expenses easily. The app is designed with simplicity and clarity in mind, making it easy for users to understand where their money goes.
-
-This project is part of my Android development portfolio and demonstrates core Android concepts such as activities, layouts, data handling, and navigation..
+Expense Tracker is a **Kotlin Android app** that helps users **track their expenses,** visualize **monthly spending charts,** and manage **personal finance** efficiently. The app supports **dark mode,** integrates with **Firebase Authentication,** and uses **MPAndroidChart** for beautiful charts. 
 
 ---
 
 ## ✨ Features
 
-. ➕ Add new expenses - Users can enter a new expense with amount and category
-. 📋 View all expenses - See a list of all recorded expenses
-. 📊 View total expenses - Shows total spending
-. 📅 Monthly expense summary - See how much was spent per month
-. 🚀 Splash screen - Logo fad-in animation
-. 🔙 Back button in Stats - Navigate back to Dashboard easily
+- **User Authentication**
+   - Register and login with **email & password** via Firebase
+- **Expense Management**
+   - Add, save, update, cancel, and delete expenses
+   - Categories: Food, Rent, Transport, Groceries, Personal care, etc
+   - Each expense includes: Title, Amount, Category, and Date
+- **Statistics & Charts**
+   - Bar Chart showing **monthly expenses per category**
+   - Total expenses and monthly totals
+   - Automatic dark/light mode support
+- **Dark Mode**
+   - Follows system theme
+   - Material Design 3 colors(colorSurface, colorOnSurface, colorPrimary)
+- **Firebase Integration**
+   - Authentication and database ready
+   - Secure: google-services.json **is ignored in GitHub**
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Technologies Used
 
-. Language: Kotlin
-. IDE: Android Studio
-. UI: XML Layouts
-. Architecture: Basic Activity-based architecture
-. minimum SDK: 21(Android 5.0)
+- Kotlin
+- Android SDK
+- Firebase Authentication
+- MPAndroidChart
+- Material Design 3(Dark/Light Theme)
 
 ---
 
 ## 📱 ScreenShots
 
-### Splash Screen
-![Splash Screen](screenshots/splash_screen.png)
+#### Login Screen
+![Login_Screen](screenshots/login_screen.jpg)
 
-### Dashboard
-![Dashboard](screenshots/dashboard.png)
+#### Dashboard Screen
+![Dashboard_Screen](screenshots/dashboard_screen.jpg)
 
-### Add Expense
-![Add Expense](screenshots/add_expense.png)
+#### Add Expense Screen
+![Add Expense](screenshots/add_expense.jpg)
 
-### Update Expense
-![Update Expense](screenshots/update_expense.png)
+#### Update Expense Screen
+![Update Expense](screenshots/update_expense.jpg)
 
-### Statistics
-![Statistics](screenshots/statistics.png)
+#### Statistics Screen
+![Statistics_Screen](screenshots/statistics_screen.jpg)
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Installation
 
-Prerequisites
-
-. Android Studio installed
-. Android device or emulator
-
-Installation
-
-Clone the repository:
+1. Clone the repository:
 git clone
 https://github.com/RapolaiKate/expencetracker.git
 2. Open the project in Android Studio
-3. Let Gradle finish syncing
-4. Run the app on an emulator or physical device
+3. Download **Firebase project** and **add** google-services.json to app/folder
+4. Let Gradle finish syncing
+5. Run the app on an emulator or physical device
 
 
 ---
 
-## 📚 What I Learned
+## 📚 Notes
 
-. Kotlin fundamentals for Android
-. Working with layouts and UI components
-. Handling user input
-. Managing app navigation
-. Structuring an Android project
-. Improving UI with splash screen and animations
-
+- google-services.json is **ignored in GitHub** for security.
+- The app supports **both light and dark mode** automatically.
+- Chart text and axes adapt to theme coors(colorOnSurface) for visibility.
 
 ---
 
 ## 🔮 Future improvements
 
-. 📈 Charts and statistics screen - Visualize experiences with graphs
-. 🗄️ Room Database - Store expenses permanently
-. 📝 Export expenses - Save data as CSV or PDF
-. 🌃 Dark mode - Lets users switch theme
-. ⏰ Notification reminders - Remind users to add expenses
-
+- Add **category icons & colors** for better visualization
+- Add **filter by month or category**
+- Add **export/backup data** feature
 
 ---
 

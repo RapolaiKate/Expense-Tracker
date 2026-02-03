@@ -9,7 +9,7 @@
     <!-- DASHBOARD FRAGMENT -->
     <fragment
         android:id="@+id/dashboardFragment"
-        android:name="com.example.expensetrackerclean.ui.dashboard.DashboardFragment"
+        android:name="com.kate.expensetrackerclean.ui.dashboard.DashboardFragment"
         android:label="Dashboard"
         tools:layout="@layout/fragment_dashboard">
 
@@ -33,27 +33,27 @@
     <!-- ADD EXPENSE FRAGMENT -->
     <fragment
         android:id="@+id/addExpenseFragment"
-        android:name="com.example.expensetrackerclean.ui.addexpense.AddExpenseFragment"
+        android:name="com.kate.expensetrackerclean.ui.addexpense.AddExpenseFragment"
         android:label="Add Expense"
         tools:layout="@layout/fragment_addexpense"/>
 
     <!-- UPDATE EXPENSE FRAGMENT -->
     <fragment
         android:id="@+id/updateExpenseFragment"
-        android:name="com.example.expensetrackerclean.ui.updateexpense.UpdateExpenseFragment"
+        android:name="com.kate.expensetrackerclean.ui.updateexpense.UpdateExpenseFragment"
         android:label="Update Expense"
         tools:layout="@layout/fragment_update_expense">
 
         <!-- ARGUMENT FOR EXPENSE ENTITY ID -->
         <argument
             android:name="expense"
-            app:argType="com.example.expensetrackerclean.data.database.ExpenseEntity"/>
+            app:argType="com.kate.expensetrackerclean.data.database.ExpenseEntity"/>
     </fragment>
 
     <!-- STATS FRAGMENT -->
     <fragment
         android:id="@+id/statsFragment"
-        android:name="com.example.expensetrackerclean.ui.stats.StatsFragment"
+        android:name="com.kate.expensetrackerclean.ui.stats.StatsFragment"
         android:label="Stats"
         tools:layout="@layout/fragment_stats"/>
 

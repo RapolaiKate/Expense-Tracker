@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface">
 
     <!-- TOOLBAR -->
 <com.google.android.material.appbar.MaterialToolbar
@@ -13,7 +14,8 @@
     android:layout_height="?attr/actionBarSize"
     android:background="?attr/colorPrimary"
     android:title="@string/total_expenses"
-    android:titleTextColor="@android:color/white"
+    android:titleTextColor="?attr/colorOnPrimary"
+    app:popupTheme="@style/ThemeOverlay.Material3.ActionBar"
     app:layout_scrollFlags="scroll|enterAlways"/>
 
     <!-- NAV HOST FRAGMENT FOR NAVIGATION -->
@@ -22,6 +24,8 @@
     android:name="androidx.navigation.fragment.NavHostFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="?attr/actionBarSize"
+    android:background="?attr/colorSurface"
     app:defaultNavHost="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     app:navGraph="@navigation/nav_graph"/>

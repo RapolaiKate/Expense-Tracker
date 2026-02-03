@@ -16,10 +16,14 @@
     <string name="statistics">Statistics</string>
     <string name="total">Total</string>
     <string name="total_amount">R 0.00</string>
-    <string name="this_month">Month Expense</string>
+    <string name="monthly_expenses">Monthly Expenses</string>
     <string name="cancel">Cancel Expense</string>
     <string name="date_select">12/05/2025</string>
     <string name="app_logo">App Logo</string>
     <string name="view_stats">View Stats</string>
     <string name="back_to_dashboard">Back to Dashboard</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
 </resources>

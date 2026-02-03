@@ -7,7 +7,7 @@
     android:layout_margin="8dp"
     app:cardCornerRadius="10dp"
     app:cardElevation="4dp"
-    android:background="@color/backgroundColor"
+    android:background="?attr/colorSurface"
     android:foreground="?attr/selectableItemBackground">
 
     <!-- Expense LinearLayout -->
@@ -25,7 +25,7 @@
     android:text="@string/expense_title"
     android:textSize="16sp"
     android:textStyle="bold"
-    android:textColor="@color/textPrimary"/>
+    android:textColor="?attr/colorOnSurface"/>
 
     <!-- Expense Category -->
 <TextView
@@ -33,7 +33,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/category"
-    android:textColor="@color/textSecondary"
+    android:textColor="?attr/colorOnSurface"
     android:textSize="14sp"
     android:layout_marginTop="2dp"/>
 
@@ -52,7 +52,7 @@
     android:layout_weight="1"
     android:text="@string/date_select"
     android:textSize="14sp"
-    android:textColor="@color/textSecondary"/>
+    android:textColor="?attr/colorOnSurface"/>
 
     <!-- Expense Amount -->
 <TextView
@@ -61,7 +61,7 @@
     android:layout_height="wrap_content"
     android:text="@string/total_amount"
     android:textSize="15sp"
-    android:textColor="@color/textPrimary"
+    android:textColor="?attr/colorOnSurface"
     android:textStyle="bold"/>
 
       </LinearLayout>

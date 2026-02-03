@@ -2,19 +2,21 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:theme="@style/Theme.Material3.DayNight.NoActionBar"
-    tools:context="com.example.expensetrackerclean.ui.stats.StatsFragment"
+    tools:context="com.kate.expensetrackerclean.ui.stats.StatsFragment"
     tools:layout="@layout/fragment_stats"
+    android:fillViewport="true"
     android:padding="16dp"
-    android:background="@color/backgroundColor">
+    android:background="?attr/colorSurface">
 
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:gravity="center_horizontal">
+    android:padding="16dp">
 
     <!-- Screen Title -->
 <TextView
@@ -24,8 +26,32 @@
     android:text="@string/statistics"
     android:textSize="24sp"
     android:textStyle="bold"
-    android:textColor="@color/textPrimary"
-    android:layout_marginBottom="16dp"/>
+    android:layout_gravity="center_horizontal"
+    android:textColor="?attr/colorPrimary"
+    android:layout_marginBottom="12dp"/>
+
+    <!-- Bar Chart -->
+<com.github.mikephil.charting.charts.BarChart
+    android:id="@+id/barChart"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:layout_marginBottom="16dp" />
+
+    <!-- Summary numbers below chart -->
+
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="?attr/colorSurface"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp">
+
+    <!-- Total Expenses (let) -->
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <!-- Total Expense -->
 <TextView
@@ -33,8 +59,9 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/total_expenses"
-    android:textSize="18sp"
-    android:textColor="@color/textSecondary"
+    android:textStyle="bold"
+    android:textSize="16sp"
+    android:textColor="?attr/colorOnSurface"
     android:layout_marginTop="16dp"/>
 
 <TextView
@@ -43,18 +70,18 @@
     android:layout_height="wrap_content"
     android:text="@string/total_amount"
     android:textSize="22sp"
-    android:textStyle="bold"
-    android:textColor="@color/primaryColor"
-    android:layout_marginBottom="32dp"/>
+    android:textColor="?attr/colorOnSurface"
+    android:layout_marginBottom="16dp"/>
 
     <!-- Optional: Monthly Expenses -->
 <TextView
     android:id="@+id/tvMonthlyAmountLabel"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="@string/this_month"
-    android:textSize="18sp"
-    android:textColor="@color/textSecondary"
+    android:text="@string/monthly_expenses"
+    android:textStyle="bold"
+    android:textSize="16sp"
+    android:textColor="?attr/colorOnSurface"
     android:layout_marginTop="16dp"/>
 
 <TextView
@@ -63,8 +90,11 @@
     android:layout_height="wrap_content"
     android:text="@string/total_amount"
     android:textSize="22sp"
-    android:textStyle="bold"
-    android:textColor="@color/primaryColor"/>
+    android:textColor="?attr/colorOnSurface"/>
+
+   </LinearLayout>
+
+  </androidx.cardview.widget.CardView>
 
     <!-- Back Button -->
 <com.google.android.material.button.MaterialButton
@@ -73,8 +103,9 @@
         android:layout_height="wrap_content"
         android:text="@string/back_to_dashboard"
         android:textSize="16sp"
-        android:textColor="@color/cardColor"
-        android:backgroundTint="@color/primaryColor"
+        style="@style/Widget.Material3.Button"
+        android:textColor="?attr/colorOnPrimary"
+        android:backgroundTint="?attr/colorPrimary"
         android:padding="14dp"
         android:layout_marginTop="24dp"/>
 

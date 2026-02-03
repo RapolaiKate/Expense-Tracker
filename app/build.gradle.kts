@@ -5,16 +5,17 @@ plugins {
     id("kotlin-parcelize")
     id("org.jetbrains.kotlin.plugin.compose")
     id("androidx.navigation.safeargs.kotlin")
+    id("com.google.gms.google-services")
 }
 
 android {
-    namespace = "com.example.expensetrackerclean"
+    namespace = "com.kate.expensetrackerclean"
     compileSdk {
         version = release(36)
     }
 
     defaultConfig {
-        applicationId = "com.example.expensetrackerclean"
+        applicationId = "com.kate.expensetrackerclean"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -33,11 +34,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "11"
+    kotlin {
+        jvmToolchain(17)
 
     }
     buildFeatures {
@@ -54,6 +55,9 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+    implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
+    implementation("com.google.firebase:firebase-auth-ktx")
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     implementation(libs.material)
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)

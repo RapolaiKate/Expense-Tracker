@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Background -->
+    <color name="background">#121212</color>
+    <!-- Dark Background -->
+    <color name="surface">#1E1E1E</color>
+    <!-- Text -->
+    <color name="on_background">#FFFFFF</color>
+    <!-- Text on Dark Background -->
+    <color name="on_surface">#FFFFFF</color>
+    <!-- Primary Colors -->
+    <color name="primaryColor">#BB86FC</color>
+    <color name="onPrimaryColor">#000000</color>
+</resources>
