@@ -1,101 +1,179 @@
-## 📊 Expense Tracker App
+# 💰 Expense Tracker – Personal Finance Management App
 
-## 📌 Overview
+## 📌 Project Overview
 
-Expense Tracker is a **Kotlin Android app** that helps users **track their expenses,** visualize **monthly spending charts,** and manage **personal finance** efficiently. The app supports **dark mode,** integrates with **Firebase Authentication,** and uses **MPAndroidChart** for beautiful charts. 
+Expense Tracker is a Kotlin-based Android application designed to help users manage their personal finances by tracking income and expenses in one place.
 
----
+The application allows users to record financial transactions, monitor their spending, view income and expense statistics, and track their monthly financial performance through an interactive dashboard.
 
-## ✨ Features
+The app features Firebase Authentication, Room Database for local data storage, and MPAndroidChart for financial data visualization.
 
-- **User Authentication**
-   - Register and login with **email & password** via Firebase
-- **Expense Management**
-   - Add, save, update, cancel, and delete expenses
-   - Categories: Food, Rent, Transport, Groceries, Personal care, etc
-   - Each expense includes: Title, Amount, Category, and Date
-- **Statistics & Charts**
-   - Bar Chart showing **monthly expenses per category**
-   - Total expenses and monthly totals
-   - Automatic dark/light mode support
-- **Dark Mode**
-   - Follows system theme
-   - Material Design 3 colors(colorSurface, colorOnSurface, colorPrimary)
-- **Firebase Integration**
-   - Authentication and database ready
-   - Secure: google-services.json **is ignored in GitHub**
+## ✨ Key Features
 
----
+### 🔐 User Authentication
+- User registration with email and password.
+- Secure login using Firebase Authentication.
+- Password visibility controls.
+- Logout functionality.
 
-## 🛠️ Technologies Used
+### 💵 Income Management
+- Add and save income transactions.
+- Edit existing income transactions.
+- Delete income transactions.
+- Record transaction title, amount, category and date.
 
-- Kotlin
-- Android SDK
-- Firebase Authentication
-- MPAndroidChart
-- Material Design 3(Dark/Light Theme)
+### 💳 Expense Management
+- Add and save expense transactions.
+- Edit existing expense transactions.
+- Delete expense transactions.
+- Organize expenses by category.
+- Record transaction title, amount, category and date.
 
----
+### 📜 Transaction History
+- View income and expense transactions in one place.
+- Filter transactions by year, month and transaction type.
+- Apply quick filters.
+- View transaction details.
+- Edit and delete existing transactions.
+- Monitor income, expenses and balance.
 
-## 📱 ScreenShots
+### 📊 Financial Dashboard
+- Monthly financial overview.
+- Select different months to review financial performance.
+- View total monthly income.
+- View total monthly expenses.
+- Monitor monthly balance.
+- Recent transaction overview.
+- Monthly income and expense comparison chart.
+- Yearly financial overview.
 
-#### Login Screen
-![Login_Screen](screenshots/login_screen.jpg)
+### 📈 Financial Statistics
+- Dedicated Income Statistics screen.
+- Dedicated Expense Statistics screen.
+- Visual financial data representation using charts.
+- Monitor financial activity and spending patterns.
 
-#### Dashboard Screen
-![Dashboard_Screen](screenshots/dashboard_screen.jpg)
+### 🎨 User Interface
+- Dark-themed interface.
+- Material Design components.
+- Organized navigation.
+- Financial cards and interactive charts.
+- Consistent application styling.
 
-#### Add Expense Screen
-![Add Expense](screenshots/add_expense.jpg)
+## 🛠️ Technologies & Tools Used
 
-#### Update Expense Screen
-![Update Expense](screenshots/update_expense.jpg)
+| Technology | Purpose |
+|---|---|
+| Kotlin | Android application development |
+| Android SDK | Android platform development |
+| Android Studio | Development environment |
+| Firebase Authentication | User authentication |
+| Room Database | Local transaction storage |
+| SQLite | Local database engine |
+| MPAndroidChart | Financial charts and visualization |
+| Material Components | UI components and interface design |
+| Gradle | Project build and dependency management |
 
-#### Statistics Screen
-![Statistics_Screen](screenshots/statistics_screen.jpg)
+## 📱 Application Screenshots
 
----
+### 🔐 Authentication
 
-## 🚀 Installation
+#### 01. Login Screen
+![Login Screen](screenshots/01_login.jpeg)
+
+#### 02. Sign Up Screen
+![Sign Up Screen](screenshots/02_sign_up.jpeg)
+
+### 🏠 Main Navigation
+
+#### 03. Main Screen
+![Main Screen](screenshots/03_main_screen.jpeg)
+
+### 💰 Income & Expense Management
+
+#### 04. Add Income
+![Add Income](screenshots/04_add_income.jpeg)
+
+#### 05. Add Expense
+![Add Expense](screenshots/05_add_expense.jpeg)
+
+### 📜 Transaction Management
+
+#### 06. Transaction History
+![Transaction History](screenshots/06_history_transaction.jpeg)
+
+#### 07. Update Transaction
+![Update Transaction](screenshots/07_update_transaction.jpeg)
+
+#### 08. Delete Transaction
+![Delete Transaction](screenshots/08_delete_transaction.jpeg)
+
+### 📊 Financial Overview
+
+#### 09. Dashboard
+![Dashboard](screenshots/09_dashboard.jpeg)
+
+#### 10. Income Statistics
+![Income Statistics](screenshots/10_income_statistics.jpeg)
+
+#### 11. Expense Statistics
+![Expense Statistics](screenshots/11_expense_statistics.jpeg)
+
+
+## 🚀 Installation & Setup
+
+### Prerequisites
+- Android Studio.
+- Android SDK.
+- Kotlin support.
+- A Firebase project.
+
+### Steps
 
 1. Clone the repository:
-git clone
-https://github.com/RapolaiKate/expencetracker.git
-2. Open the project in Android Studio
-3. Download **Firebase project** and **add** google-services.json to app/folder
-4. Let Gradle finish syncing
-5. Run the app on an emulator or physical device
 
+   ```bash
+   git clone https://github.com/RapolaiKate/expencetracker.git
+   ```
 
----
+2. Open the project in Android Studio.
 
-## 📚 Notes
+3. Create or configure your own Firebase project.
 
-- google-services.json is **ignored in GitHub** for security.
-- The app supports **both light and dark mode** automatically.
-- Chart text and axes adapt to theme coors(colorOnSurface) for visibility.
+4. Enable Firebase Authentication with Email/Password sign-in.
 
----
+5. Download your Firebase configuration file (`google-services.json`).
 
-## 🔮 Future improvements
+6. Place `google-services.json` inside the app directory.
 
-- Add **category icons & colors** for better visualization
-- Add **filter by month or category**
-- Add **export/backup data** feature
+7. Allow Gradle to sync and download the required dependencies.
 
----
+8. Build and run the application on an Android emulator or physical device.
 
-## 👤 Author
-Rapolai Kate
-(Android Developer)
+**Note:** The Firebase configuration file is intentionally excluded from the public GitHub repository. Each developer must configure their own Firebase project.
 
----
+## 🔒 Security & Data Management
+
+- Firebase Authentication handles user authentication.
+- Room Database stores income and expense transactions locally.
+- Firebase configuration files are excluded from Git tracking.
+- Local configuration and signing credentials should not be committed to the repository.
+
+## 🔮 Future Improvements
+
+- Add transaction category icons and customizable colours.
+- Introduce additional financial reports.
+- Add transaction export and backup functionality.
+- Introduce additional financial insights and budgeting tools.
+
+## 👩‍💻 Author
+
+**Rapolai Kate**
+
+Android Developer | Kotlin Developer
+
+GitHub: [RapolaiKate](https://github.com/RapolaiKate)
 
 ## 📄 License
 
-This project is for learning and portfolio purposes.
-
-
-
-
-
+This project is developed for educational, learning and portfolio purposes.

@@ -1,14 +1,31 @@
-<resources
-    xmlns:tools="http://schemas.android.com/tools">
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
 
-    <style name="Theme.ExpenseTrackerClean" parent="Theme.Material3.DayNight.NoActionBar">
+    <!-- Main application theme -->
+    <style name="Theme.ExpenseTrackerClean"
+        parent="Theme.Material3.DayNight.NoActionBar">
 
-        <!-- Background & Text Colors -->
+        <item name="android:windowBackground">@color/rootBackground</item>
+        <item name="android:colorAccent">@color/accentCyan</item>
+
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorOnPrimary">@color/on_primary_color</item>
         <item name="colorSurface">@color/surface</item>
-        <item name="colorOnBackground">@color/on_background</item>
         <item name="colorOnSurface">@color/on_surface</item>
-        <item name="colorPrimary">@color/primaryColor</item>
-        <item name="colorOnPrimary">@color/onPrimaryColor</item>
 
     </style>
+
+    <!-- Expense calendar theme -->
+    <style name="IncomeExpenseDatePickerTheme"
+        parent="@android:style/Theme.Material.Dialog.Alert">
+
+        <item name="android:colorAccent">#00C853</item>
+        <item name="android:colorControlActivated">#00C853</item>
+        <item name="android:colorControlNormal">#FFFFFF</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:textColorSecondary">#FFFFFF</item>
+        <item name="android:windowBackground">#15151D</item>
+
+    </style>
+
 </resources>

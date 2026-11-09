@@ -4,10 +4,10 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.kate.expensetrackerclean.data.database.ExpenseDatabase
 import com.kate.expensetrackerclean.data.database.ExpenseEntity
 import com.kate.expensetrackerclean.data.repository.ExpenseRepository
 import kotlinx.coroutines.launch
+import com.kate.expensetrackerclean.data.database.AppDatabase
 
 
 class DashboardViewModel(application: Application): AndroidViewModel(application) {
@@ -20,7 +20,7 @@ class DashboardViewModel(application: Application): AndroidViewModel(application
 
     init {
         // ===== INITIALIZE DAO & REPO =====
-        val expenseDao = ExpenseDatabase.getDatabase(application).expenseDao()
+        val expenseDao = AppDatabase.getDatabase(application).expenseDao()
         repository = ExpenseRepository(expenseDao)
 
         // ===== READ DATA FROM REPOSITORY =====

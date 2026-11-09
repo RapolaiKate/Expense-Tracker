@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:fillViewport="true"
+    tools:context="com.kate.expensetrackerclean.UpdateTransactionActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Back Arrow and Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_back"
+                android:contentDescription="@string/back"
+                android:padding="8dp"
+                app:tint="#00C853" />
+
+            <TextView
+                android:id="@+id/tvHeader"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/update_transaction"
+                android:textSize="23sp"
+                android:textColor="#00C853"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginEnd="48dp"/>
+
+        </LinearLayout>
+
+        <!-- Transaction Type -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/transaction_type"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/tvTransactionType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/expense"
+            android:textColor="#00C853"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:padding="14dp"
+            android:background="#15151D"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Transaction Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/transaction_title"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"/>
+
+        <EditText
+            android:id="@+id/editTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_transaction_title"
+            android:inputType="textCapSentences"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#AAAAAA"
+            android:minHeight="52dp"
+            android:padding="12dp"
+            android:backgroundTint="#00C853"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/tvErrorTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FF5252"
+            android:textSize="13sp"
+            android:visibility="gone"/>
+
+        <!-- Amount -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/amount_r"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="12dp"/>
+
+        <EditText
+            android:id="@+id/editAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_amount"
+            android:inputType="numberDecimal"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#AAAAAA"
+            android:minHeight="52dp"
+            android:padding="12dp"
+            android:backgroundTint="#00C853"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/tvErrorAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FF5252"
+            android:textSize="13sp"
+            android:visibility="gone"/>
+
+        <!-- Category -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/category"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="12dp"/>
+
+        <EditText
+            android:id="@+id/editCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_or_select_category"
+            android:inputType="textCapSentences"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#AAAAAA"
+            android:minHeight="52dp"
+            android:padding="12dp"
+            android:backgroundTint="#00C853"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/tvErrorCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FF5252"
+            android:textSize="13sp"
+            android:visibility="gone"/>
+
+        <!-- Date -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_date"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="12dp"/>
+
+        <EditText
+            android:id="@+id/editDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/select_transaction_date"
+            android:inputType="none"
+            android:focusable="false"
+            android:clickable="true"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#AAAAAA"
+            android:minHeight="52dp"
+            android:padding="12dp"
+            android:backgroundTint="#00C853"
+            android:layout_marginBottom="4dp"
+            tools:ignore="ClickableViewAccessibility"/>
+
+        <TextView
+            android:id="@+id/tvErrorDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FF5252"
+            android:textSize="13sp"
+            android:visibility="gone"/>
+
+        <!-- Edit Transaction Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnEditTransaction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/edit_transaction"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#8145D5"
+            android:layout_marginTop="20dp"
+            android:padding="14dp"/>
+
+        <!-- Save Changes Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSaveTransaction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/save_changes"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:backgroundTint="#00C853"
+            android:layout_marginTop="10dp"
+            android:padding="14dp"/>
+
+    </LinearLayout>
+
+</ScrollView>

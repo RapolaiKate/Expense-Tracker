@@ -1,18 +1,36 @@
+
 package com.kate.expensetrackerclean.data.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.kate.expensetrackerclean.data.database.ExpenseEntity
+import com.kate.expensetrackerclean.data.database.IncomeEntity
 import com.kate.expensetrackerclean.data.repository.ExpenseRepository
+import com.kate.expensetrackerclean.data.repository.IncomeRepository
 
-class StatsViewModel(private val repository: ExpenseRepository): ViewModel() {
+class StatsViewModel(
+    expenseRepository: ExpenseRepository,
+    incomeRepository: IncomeRepository
+) : ViewModel() {
 
-    // ===== ALL EXPENSES (LiveData from repository) =====
-    val allExpenses: LiveData<List<ExpenseEntity>> = repository.allExpenses
+    // EXPENSE STATISTICS
+    val allExpenses: LiveData<List<ExpenseEntity>> =
+        expenseRepository.allExpenses
 
-    // ===== TOTAL AMOUNT OF ALL EXPENSES =====
-    val totalAmount: LiveData<Double> = repository.totalAmount
-    // ===== MONTHLY AMOUNT OF EXPENSES =====
-    val monthlyAmount: LiveData<Double> = repository.monthlyAmount
+    val totalExpenses: LiveData<Double> =
+        expenseRepository.totalAmount
+
+    val monthlyExpenses: LiveData<Double> =
+        expenseRepository.monthlyAmount
+
+    // INCOME STATISTICS
+    val allIncome: LiveData<List<IncomeEntity>> =
+        incomeRepository.allIncome
+
+    val totalIncome: LiveData<Double> =
+        incomeRepository.totalAmount
+
+    val monthlyIncome: LiveData<Double> =
+        incomeRepository.monthlyAmount
 }
 

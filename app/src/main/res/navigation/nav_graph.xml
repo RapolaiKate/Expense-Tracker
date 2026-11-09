@@ -11,7 +11,7 @@
         android:id="@+id/dashboardFragment"
         android:name="com.kate.expensetrackerclean.ui.dashboard.DashboardFragment"
         android:label="Dashboard"
-        tools:layout="@layout/fragment_dashboard">
+        tools:layout="@layout/activity_dashboard">
 
         <!-- ACTION: DASHBOARD -> ADD EXPENSE -->
         <action
@@ -35,14 +35,14 @@
         android:id="@+id/addExpenseFragment"
         android:name="com.kate.expensetrackerclean.ui.addexpense.AddExpenseFragment"
         android:label="Add Expense"
-        tools:layout="@layout/fragment_addexpense"/>
+        tools:layout="@layout/activity_delete_transaction"/>
 
     <!-- UPDATE EXPENSE FRAGMENT -->
     <fragment
         android:id="@+id/updateExpenseFragment"
         android:name="com.kate.expensetrackerclean.ui.updateexpense.UpdateExpenseFragment"
         android:label="Update Expense"
-        tools:layout="@layout/fragment_update_expense">
+        tools:layout="@layout/activity_update_transaction">
 
         <!-- ARGUMENT FOR EXPENSE ENTITY ID -->
         <argument
@@ -55,6 +55,6 @@
         android:id="@+id/statsFragment"
         android:name="com.kate.expensetrackerclean.ui.stats.StatsFragment"
         android:label="Stats"
-        tools:layout="@layout/fragment_stats"/>
+        tools:layout="@layout/fragment_expense_stats"/>
 
 </navigation>

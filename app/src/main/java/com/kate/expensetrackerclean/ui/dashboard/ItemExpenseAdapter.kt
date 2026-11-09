@@ -22,7 +22,7 @@ class ItemExpenseAdapter(private var expenseList: List<ExpenseEntity>): Recycler
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExpenseViewHolder {
 
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_expense, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_history_transaction, parent, false)
         return ExpenseViewHolder(view)
     }
 

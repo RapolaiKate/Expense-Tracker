@@ -1,5 +1,7 @@
 package com.kate.expensetrackerclean.ui.stats
 
+import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,122 +10,370 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.firebase.auth.FirebaseAuth
 import com.github.mikephil.charting.charts.BarChart
-import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import com.github.mikephil.charting.components.XAxis
+import com.kate.expensetrackerclean.LoginActivity
 import com.kate.expensetrackerclean.R
-import com.google.android.material.button.MaterialButton
-import com.kate.expensetrackerclean.data.database.ExpenseDatabase
-import com.kate.expensetrackerclean.data.database.ExpenseEntity
+import com.kate.expensetrackerclean.data.database.AppDatabase
 import com.kate.expensetrackerclean.data.repository.ExpenseRepository
+import com.kate.expensetrackerclean.data.repository.IncomeRepository
 import com.kate.expensetrackerclean.data.viewmodel.StatsViewModel
 import com.kate.expensetrackerclean.data.viewmodel.StatsViewModelFactory
-import kotlin.collections.forEachIndexed
+import java.util.Locale
 
+class StatsFragment : Fragment() {
 
-class StatsFragment: Fragment() {
+    // =====================================
+    // UI ELEMENTS
+    // =====================================
 
-    // ===== TEXT VIEWS =====
     private lateinit var barChart: BarChart
+    private lateinit var tvStatsTitle: TextView
+    private lateinit var tvTotalAmountLabel: TextView
     private lateinit var tvTotalAmount: TextView
+    private lateinit var tvMonthlyAmountLabel: TextView
     private lateinit var tvMonthlyAmount: TextView
-    private lateinit var btnBack: MaterialButton
+
+    // Identify the selected statistics screen
+    private val isIncomeScreen: Boolean
+        get() = arguments?.getString("transaction_type") == "INCOME"
+
+
+    // =====================================
+    // LOAD CORRECT XML LAYOUT
+    // =====================================
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_stats, container, false)
+    ): View {
+
+        val layoutId = if (isIncomeScreen) {
+            R.layout.fragment_income_stats
+        } else {
+            R.layout.fragment_expense_stats
+        }
+
+        return inflater.inflate(layoutId, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+    // =====================================
+    // INITIALIZE SCREEN
+    // =====================================
+
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?
+    ) {
         super.onViewCreated(view, savedInstanceState)
 
-        // ===== INITIALIZE TEXT VIEWS =====
-        barChart = view.findViewById(R.id.barChart)
-        tvTotalAmount = view.findViewById(R.id.tvTotalAmount)
-        tvMonthlyAmount = view.findViewById(R.id.tvMonthlyAmount)
-        btnBack = view.findViewById(R.id.btnBack)
+        // Connect common views
+        tvStatsTitle = view.findViewById(R.id.tvStatsTitle)
 
-        // ===== GET REPOSITORY INSTANCE =====
-        val repository = ExpenseRepository(ExpenseDatabase.getDatabase(requireContext()).expenseDao())
+        // Connect Income or Expense views
+        if (isIncomeScreen) {
 
-        // ===== USE FACTORY TO GET VIEWMODEL =====
-        val viewModel = ViewModelProvider(this,StatsViewModelFactory(repository)).get(StatsViewModel::class.java)
+            tvTotalAmountLabel =
+                view.findViewById(R.id.tvTotalIncomeLabel)
 
-        // ===== OBSERVE DATA FROM ROOM =====
-        viewModel.allExpenses.observe(viewLifecycleOwner) { expenses ->
+            tvTotalAmount =
+                view.findViewById(R.id.tvTotalIncome)
 
-            if (barChart == null || tvTotalAmount == null || tvMonthlyAmount == null)
-                return@observe
+            tvMonthlyAmountLabel =
+                view.findViewById(R.id.tvMonthlyIncomeLabel)
 
-            if(expenses.isEmpty()) {
-                tvTotalAmount.text = "0.00"
-                tvMonthlyAmount.text = "0.00"
-                barChart.clear()
-                barChart.invalidate()
-                return@observe
+            tvMonthlyAmount =
+                view.findViewById(R.id.tvMonthlyIncome)
+
+            barChart =
+                view.findViewById(R.id.barChartIncome)
+
+        } else {
+
+            tvTotalAmountLabel =
+                view.findViewById(R.id.tvTotalAmountLabel)
+
+            tvTotalAmount =
+                view.findViewById(R.id.tvTotalAmount)
+
+            tvMonthlyAmountLabel =
+                view.findViewById(R.id.tvMonthlyAmountLabel)
+
+            tvMonthlyAmount =
+                view.findViewById(R.id.tvMonthlyAmount)
+
+            barChart =
+                view.findViewById(R.id.barChart)
+        }
+
+        // Set screen headings
+        if (isIncomeScreen) {
+
+            tvStatsTitle.text = "Income Statistics"
+            tvTotalAmountLabel.text = "Total Income"
+            tvMonthlyAmountLabel.text = "Monthly Income"
+
+        } else {
+
+            tvStatsTitle.text = "Expense Statistics"
+            tvTotalAmountLabel.text = "Total Expenses"
+            tvMonthlyAmountLabel.text = "Monthly Expenses"
+        }
+
+
+        // =====================================
+        // CONNECT LOGOUT BUTTON
+        // =====================================
+
+        val btnLogout = if (isIncomeScreen) {
+            view.findViewById<View>(R.id.btnLogoutIncome)
+        } else {
+            view.findViewById<View>(R.id.btnLogoutExpense)
+        }
+
+        btnLogout.setOnClickListener {
+            logoutUser()
+        }
+
+
+        // =====================================
+        // CREATE DATABASE REPOSITORIES
+        // =====================================
+
+        val database =
+            AppDatabase.getDatabase(requireContext())
+
+        val expenseRepository =
+            ExpenseRepository(database.expenseDao())
+
+        val incomeRepository =
+            IncomeRepository(database.incomeDao())
+
+
+        // =====================================
+        // CREATE STATISTICS VIEWMODEL
+        // =====================================
+
+        val factory = StatsViewModelFactory(
+            expenseRepository,
+            incomeRepository
+        )
+
+        val viewModel = ViewModelProvider(
+            this,
+            factory
+        )[StatsViewModel::class.java]
+
+
+        // =====================================
+        // OBSERVE INCOME STATISTICS
+        // =====================================
+
+        if (isIncomeScreen) {
+
+            viewModel.totalIncome.observe(viewLifecycleOwner) {
+                tvTotalAmount.text = formatCurrency(it)
             }
-            // ===== TOTAL EXPENSES =====
-            val total = expenses.sumOf { it.amount }
-            tvTotalAmount.text = total.toString()
-            // ===== MONTHLY EXPENSES =====
-            val monthly = expenses.sumOf { it.amount }
-            tvMonthlyAmount.text = monthly.toString()
 
-            updateChart(barChart, expenses)
+            viewModel.monthlyIncome.observe(viewLifecycleOwner) {
+                tvMonthlyAmount.text = formatCurrency(it)
+            }
+
+            viewModel.allIncome.observe(viewLifecycleOwner) { incomeList ->
+
+                val categoryTotals = incomeList
+                    .groupBy { it.category }
+                    .map { entry ->
+                        entry.key to entry.value.sumOf { it.amount }
+                    }
+
+                updateChart(
+                    categoryTotals,
+                    "Income by Category",
+                    true
+                )
+            }
+
+        } else {
+
+
+            // =====================================
+            // OBSERVE EXPENSE STATISTICS
+            // =====================================
+
+            viewModel.totalExpenses.observe(viewLifecycleOwner) {
+                tvTotalAmount.text = formatCurrency(it)
+            }
+
+            viewModel.monthlyExpenses.observe(viewLifecycleOwner) {
+                tvMonthlyAmount.text = formatCurrency(it)
+            }
+
+            viewModel.allExpenses.observe(viewLifecycleOwner) { expenseList ->
+
+                val categoryTotals = expenseList
+                    .groupBy { it.category }
+                    .map { entry ->
+                        entry.key to entry.value.sumOf { it.amount }
+                    }
+
+                updateChart(
+                    categoryTotals,
+                    "Expenses by Category",
+                    false
+                )
+            }
         }
     }
-    // ===== CHART WITH REAL DATA =====
-    private fun updateChart(barChart: BarChart, expenses: List<ExpenseEntity>) {
-        val entries = ArrayList<BarEntry>()
 
-        expenses.forEachIndexed { index, expense ->
-            entries.add(BarEntry(index.toFloat(),
-                expense.amount.toFloat()))
+
+    // =====================================
+    // LOGOUT USER
+    // =====================================
+
+    private fun logoutUser() {
+
+        // Sign out the current Firebase user
+        FirebaseAuth.getInstance().signOut()
+
+        // Open LoginActivity
+        val intent = Intent(
+            requireContext(),
+            LoginActivity::class.java
+        )
+
+        // Clear the previous authenticated screens
+        intent.flags =
+            Intent.FLAG_ACTIVITY_NEW_TASK or
+                    Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+        startActivity(intent)
+
+        requireActivity().finish()
+    }
+
+
+    // =====================================
+    // FORMAT CURRENCY
+    // =====================================
+
+    private fun formatCurrency(amount: Double?): String {
+
+        return String.format(
+            Locale("en", "ZA"),
+            "R %.2f",
+            amount ?: 0.0
+        )
+    }
+
+
+    // =====================================
+    // UPDATE BAR CHART
+    // =====================================
+
+    private fun updateChart(
+        categoryTotals: List<Pair<String, Double>>,
+        chartLabel: String,
+        isIncome: Boolean
+    ) {
+
+        val textColor = ContextCompat.getColor(
+            requireContext(),
+            R.color.on_surface
+        )
+
+        // Handle empty transaction list
+        if (categoryTotals.isEmpty()) {
+
+            barChart.clear()
+
+            barChart.setNoDataText(
+                "No transactions recorded yet"
+            )
+
+            barChart.setNoDataTextColor(textColor)
+
+            barChart.invalidate()
+
+            return
         }
-        // ===== BAR COLORS =====
-        val dataSet = BarDataSet(entries, "Monthly Expenses")
-        val textColor = ContextCompat.getColor(requireContext(), R.color.on_surface)
-        barChart.setNoDataTextColor(textColor)
-        barChart.description.textColor = textColor
-        barChart.legend.textColor = textColor
+
+
+        // Prepare chart entries and category labels
+        val entries = ArrayList<BarEntry>()
+        val labels = ArrayList<String>()
+
+        categoryTotals.forEachIndexed { index, item ->
+
+            labels.add(item.first)
+
+            entries.add(
+                BarEntry(
+                    index.toFloat(),
+                    item.second.toFloat()
+                )
+            )
+        }
+
+
+        // Create chart data set
+        val dataSet = BarDataSet(
+            entries,
+            chartLabel
+        )
+
+
+        // Set Income and Expense bar colours
+        dataSet.color = if (isIncome) {
+            Color.parseColor("#00C853")
+        } else {
+            Color.parseColor("#EF4444")
+        }
 
         dataSet.valueTextColor = textColor
-        dataSet.valueTextSize = 12f
+        dataSet.valueTextSize = 11f
 
+
+        // Configure chart data
         val barData = BarData(dataSet)
-        barChart.data = barData
-        barChart.invalidate()    // refresh chart
 
-        // ===== X-AXIS LABELS =====
+        barData.barWidth = 0.6f
+
+        barChart.data = barData
+
+
+        // Configure X Axis
         val xAxis = barChart.xAxis
+
         xAxis.position = XAxis.XAxisPosition.BOTTOM
         xAxis.textColor = textColor
-        xAxis.textSize = 12f
+        xAxis.textSize = 10f
         xAxis.setDrawGridLines(false)
         xAxis.granularity = 1f
-        xAxis.valueFormatter = IndexAxisValueFormatter(listOf("Toiletries", "Rent", "Lunch", "Shopping", "Grocery"))
 
-        // ===== Y-AXIS NUMBERS =====
+        xAxis.valueFormatter =
+            IndexAxisValueFormatter(labels)
+
+
+        // Configure Y Axis
         barChart.axisLeft.textColor = textColor
-        barChart.axisRight.textColor = textColor
+        barChart.axisRight.isEnabled = false
 
-        btnBack.setOnClickListener {
 
-            // ===== GO BACK TO PREVIOUS SCREEN =====
-            requireActivity().onBackPressedDispatcher.onBackPressed()
-        }
+        // Configure chart appearance
+        barChart.description.isEnabled = false
+        barChart.legend.textColor = textColor
+
+        barChart.setFitBars(true)
+        barChart.animateY(700)
+
+        barChart.invalidate()
     }
 }
-
-
-
-
-
-
-

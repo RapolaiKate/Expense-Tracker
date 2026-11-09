@@ -11,10 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExpenseTrackerClean">
+
+        <!-- Login Activity - Launcher -->
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/Theme.ExpenseTrackerClean"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.ExpenseTrackerClean">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,8 +24,66 @@
             </intent-filter>
         </activity>
 
+        <!-- Sign Up Activity -->
         <activity
-            android:name=".MainActivity"/>
+            android:name=".SignUpActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Main Activity -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Income Activity -->
+        <activity
+            android:name=".IncomeActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Expense Activity -->
+        <activity
+            android:name=".ExpenseActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- History Activity -->
+        <activity
+            android:name=".HistoryActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Transaction Details Activity -->
+        <activity
+            android:name=".TransactionDetailsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Update Transaction Activity -->
+        <activity
+            android:name=".UpdateTransactionActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Delete Transaction Activity -->
+        <activity
+            android:name=".DeleteTransactionActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Statistics Activity -->
+        <activity
+            android:name=".StatsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Dashboard Host Activity -->
+        <activity
+            android:name=".DashboardHostActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"/>
+
     </application>
 
 </manifest>

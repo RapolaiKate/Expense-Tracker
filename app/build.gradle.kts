@@ -47,6 +47,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.activity.ktx)
     val composeBOM = platform("androidx.compose:compose-bom:2025.12.01")
     implementation(composeBOM)
     androidTestImplementation(composeBOM)

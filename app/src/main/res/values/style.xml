@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Main Expense Tracker Theme -->
+    <style name="ExpenseTrackerTheme"
+        parent="Theme.Material3.DayNight.NoActionBar">
+
+        <!-- Window background -->
+        <item name="android:windowBackground">@color/rootBackground</item>
+        <item name="android:colorBackground">@color/rootBackground</item>
+
+        <!-- Primary colours -->
+        <item name="colorPrimary">@color/accentPurple</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Secondary colours -->
+        <item name="colorSecondary">@color/accentCyan</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <!-- Surface colours -->
+        <item name="colorSurface">@color/cardBackground</item>
+        <item name="colorOnSurface">@color/textPrimary</item>
+
+        <!-- Status bar -->
+        <item name="android:statusBarColor">@color/rootBackground</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+        <!-- Navigation bar -->
+        <item name="android:navigationBarColor">@color/rootBackground</item>
+
+        <!-- Text colours -->
+        <item name="android:textColorPrimary">@color/textPrimary</item>
+        <item name="android:textColorSecondary">@color/textSecondary</item>
+
+        <!-- Accent -->
+        <item name="android:colorAccent">@color/accentOrange</item>
+
+    </style>
+
+</resources>
